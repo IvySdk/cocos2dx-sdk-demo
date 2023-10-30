@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "280839502575",
+    "firebase_url": "https://cat-endless-run.firebaseio.com",
+    "project_id": "cat-endless-run",
+    "storage_bucket": "cat-endless-run.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280839502575:android:bef4746d2fb33717",
+        "android_client_info": {
+          "package_name": "com.solou.catendless.run"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280839502575-gbje7963sv91m3ivk4fqigtl0kr9qmjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtNupluSLYdAXCr6XLW6IDxia1FNjgNYU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
