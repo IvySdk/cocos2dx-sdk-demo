@@ -531,6 +531,7 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
 ## default.json 各部分说明
 **普通属性**
 appid: 应用id
+v_api: 此配置版本号
 appflyers.devkey: af app id
 requireFriends:是否在facebook登陆是拉取朋友列表
 enableAfAdPing:是否开启自定义af广告收入统计事件
