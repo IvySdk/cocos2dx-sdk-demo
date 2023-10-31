@@ -75,8 +75,7 @@
 ```
 
 ## 2, Initialize 初始化SDK
-* 在第一个场景中的一个脚本中的Awake方法中调用RiseSdk.Instance.Init()方法
-Call the Init function in a gameObject's Awake function in your initialize scene
+
 * 初始化回调相关
 
 ```js
