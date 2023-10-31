@@ -1,7 +1,7 @@
 # RiseSDK for CocosCreator
 
 # 前言
-    default.json 详细说明见最底部
+    default.json: sdk配置文件, 广告、计费、打点等功能均需要通过此文件配置；对各部分配置详细说明见文档最底部
 
 ## 1, Add dependencies 添加引用
 1. 添加default.json到native/engine/android/app/src/main/assets目录
@@ -528,6 +528,226 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
 
 
 ## default.json 各部分说明
+sdk配置文件,放置在`native/engine/android/app/src/main/assets`目录下，广告、计费、打点等功能均需要通过此文件配置
+* 完整default.json 示例
+
+```js
+{
+  "appflyers.devkey": "J6ejjnUP9fMkv29PqBuYzR",
+  "requireFriends": true,
+  "debug": false,
+  "enableAfAdPing": false,
+  "mixAdEvents": false,
+  "api.top_user_advalue": "https://hda2k62cp0.execute-api.us-west-1.amazonaws.com/top_user_advalue",
+  "ad.ecpm.url": "https://k3kp5yrim4.execute-api.us-west-1.amazonaws.com/default/ivy-ecpm-api",
+  "providers": [],
+  "data": {
+    "push": [
+      {
+        "api": "firebase",
+        "manual": 0,
+        "topic": "",
+        "push-server-url": "http://push.papermobi.com:7778/fcmpush"
+      }
+    ]
+  },
+  "sns": {
+    "api": "facebook",
+    "invite_url": "",
+    "invite_preview_url": "",
+    "like_url": "",
+    "friends": true,
+    "leader_board_url": "http://match3games1.iibingo.com/api"
+  },
+  "share": "https://play.google.com/store/apps/details?id=com.bubbleshooter.popbubbles.shootbubblesgame",
+  "remoteconfig": {
+    "PAM_ad_unit_android_banner": "ca-app-pub-1914768831611213/4106575741",
+    "PAM_ad_unit_android_interstitial": "ca-app-pub-1914768831611213/2402557932",
+    "PAM_ad_unit_android_rewarded": "ca-app-pub-1914768831611213/5419657410",
+    "is_pam_banner": false,
+    "is_pam_inter": false,
+    "is_pam_video": false
+  },
+  "banner": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-1914768831611213/4106575741"
+      }
+    }
+  ],
+  "full": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-1914768831611213/2402557932"
+      }
+    }
+  ],
+  "video": [
+    {
+      "provider": "admob",
+      "p": {
+        "placement": "ca-app-pub-1914768831611213/5419657410"
+      }
+    }
+  ],
+  "adLoadTimeout": 10,
+  "adRefreshInterval": 1800,
+  "bannerLoadTimeoutSeconds": 5,
+  "gen_events": {
+    "interstitial_shown_2_in1day": [
+      {
+        "e1": "interstitial_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S3_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 3,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S4_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 4,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "S5_1D": [
+      {
+        "e1": "interstitial_shown",
+        "v": 5,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "interstitial_shown_2_in3day": [
+      {
+        "e1": "interstitial_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 3,
+        "r": false
+      }
+    ],
+    "video_shown_2_in1day": [
+      {
+        "e1": "video_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 1,
+        "r": false
+      }
+    ],
+    "video_shown_2_in3day": [
+      {
+        "e1": "video_shown",
+        "v": 2,
+        "op": ">=",
+        "d": 3,
+        "r": false
+      }
+    ]
+  },
+  "summary_events": {
+    "op": [
+      2,
+      3
+    ],
+    "retention": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "cv": {
+      "count": [
+        1,
+        2,
+        3,
+        5,
+        10,
+        20
+      ],
+      "e": "video_completed"
+    }
+  },
+  "adParallelRequests": 1,
+  "adParallelWaitTime": 5,
+  "dontShowFullPageAdsOnSlowConnection": false,
+  "adFullScreenTimespan": 120,
+  "ad": {
+    "adNextLoadInterval": 15,
+    "timeToWaitForAdToShowSeconds": 5,
+    "updateBanner": [],
+    "adDelayFirstInterstitialCallSec": 30,
+    "adProvidersRefreshInMinutes": 60,
+    "useBannerFingerPrinting": true,
+    "useVideoClipPreloading": true,
+    "rewardedClipsCaps": {
+      "*": {
+        "intervalHours": 24,
+        "maxImpressions": 4
+      }
+    },
+    "iLTS": 10,
+    "bLTS": 10,
+    "aC": {
+      "iTs": [
+        20,
+        120
+      ],
+      "iPTs": [
+        0,
+        60
+      ],
+      "fIPT": 5,
+      "fIPSS": 2,
+      "iSTs": [
+        {
+          "f": "*",
+          "t": "*"
+        }
+      ]
+    }
+  },
+  "payment": {
+    "checkout": {
+      "1": {
+        "feename": "25coins",
+        "repeat": 1,
+        "usd": 1.99
+      },
+      "2": {
+        "feename": "70coins",
+        "repeat": 1,
+        "usd": 4.99
+      },
+      "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtpVDxkfuv2T6jkErdllxnHeMr4JqFucU+gontr0yYlvM4qt3PHlg1VY/1CQeLskBs2K420cQDaAIfCvAqil3VB6NWSci0SbMGkCidPQmlQRn90MCFAX3t+dRwgAlFwvlj4yVP53giV9GKfWVQ4EehWTg9h8fgRtILEEGgNFJMFz3MUS3erBBSOpuc9UDDtnvEo4NRaH6yUI4zUn46nrgskchYlUTeYEQo1y4lS3uPHpgriBk8XLxFIXSyKjHnnNwSeRSqeX6gEKUrzVpxzp122qv4ebdqPfyzxLUySqhkKkr3dkt45OP+/7xn3jYT5V8ClUA9GgoMwZv80bASfh9wwIDAQAB"
+    }
+  },
+  "gts": 1692666353000,
+  "gv": 1,
+  "ver": 2,
+  "appid": 2712,
+  "v_api": 0,
+  "token": "174f3dc7c2a0d2f56c9dba7946965fb6"
+}
+```
 ### 普通属性
 * appid: 应用id
 * v_api: 此配置版本号
@@ -563,9 +783,9 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
     }
   ]
 ```
-adLoadTimeout：广告加载自定义超时时间
-adRefreshInterval：banner广告自动刷新间隔，单位ms
-bannerLoadTimeoutSeconds： banner自定义加载超时时间
+* adLoadTimeout：广告加载自定义超时时间
+* adRefreshInterval：banner广告自动刷新间隔，单位ms
+* bannerLoadTimeoutSeconds： banner自定义加载超时时间
 ### 计费
 所有计费点信息配置在 payment 字段结构中
 * key：用于在计费点购买后的校验支付结果，若留空，则购买后不会校验购买结果，以google billing 返回状态为最终购买结果
