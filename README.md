@@ -21,12 +21,12 @@
     }
 ```
 **Notice**
-    *ivy_debug*                   : 是否是debug模式
-    *din*                          : 是否主动时配刘海屏
-    *gms_games_app_id*             : google play games id
-    *google_admob_application_id*  : admob app id
-    *facebook_appId*               : facebook app id
-    *facebook_clientToken*         : facebook 客户端token
+* ivy_debug                   : 是否是debug模式 
+* din                          : 是否主动时配刘海屏 
+* gms_games_app_id*            : google play games id 
+* google_admob_application_id  : admob app id 
+* facebook_appId              : facebook app id 
+* facebook_clientToken         : facebook 客户端token 
 3. 主module 引用模块 ivy-sdk-core
 4. 将 CocosCreator.java、CocosCreatorEvents.java 导入主module
 5. 在 AppActiviy的onCreate方法中监听并初始化
@@ -530,15 +530,15 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
 
 ## default.json 各部分说明
 ### 普通属性
-appid: 应用id
-v_api: 此配置版本号
-appflyers.devkey: af app id
-requireFriends:是否在facebook登陆是拉取朋友列表
-enableAfAdPing:是否开启自定义af广告收入统计事件
-mixAdEvents：交叉推广事件是否与正式广告事件合并
-api.top_user_advalue：用户分层价值事件，不需要修改
-push: 自定义应用内消息推送
-remoteconfig：key-value格式的预配置字段，在firebase remote config 获取失败时可使用
+* appid: 应用id
+* v_api: 此配置版本号
+* appflyers.devkey: af app id
+* requireFriends:是否在facebook登陆是拉取朋友列表
+* enableAfAdPing:是否开启自定义af广告收入统计事件
+* mixAdEvents：交叉推广事件是否与正式广告事件合并
+* api.top_user_advalue：用户分层价值事件，不需要修改
+* push: 自定义应用内消息推送
+* remoteconfig：key-value格式的预配置字段，在firebase remote config 获取失败时可使用
 ### 广告
 广告类型包括 banner、full(大屏广告)、video(激励视频广告)
 内部可配置属性：
@@ -569,8 +569,8 @@ adRefreshInterval：banner广告自动刷新间隔，单位ms
 bannerLoadTimeoutSeconds： banner自定义加载超时时间
 ### 计费
 所有计费点信息配置在 payment 字段结构中
-key：用于在计费点购买后的校验支付结果，若留空，则购买后不会校验购买结果，以google billing 返回状态为最终购买结果
-checkout：计费点信息列表，示例：
+* key：用于在计费点购买后的校验支付结果，若留空，则购买后不会校验购买结果，以google billing 返回状态为最终购买结果
+* checkout：计费点信息列表，示例：
 
 ```js
 //说明：
