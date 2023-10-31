@@ -1,10 +1,7 @@
 # RiseSDK for CocosCreator
 
 # 前言
-  **将 default.json 放置在assets目录下**
-  **将risesdk.jar导入**
-  **CocosCreator.java、CocosCreatorEvents.java导入项目**
-  **状态值为bool类型时， True 使用 0 代替， false 使用 1 代替**
+    default.json 详细说明见最底部
 
 ## 1, Add dependencies 添加引用
 1. 添加default.json到native/engine/android/app/src/main/assets目录
@@ -23,13 +20,13 @@
         ]
     }
 ```
-* Notice
-    ivy_debug                    : 是否是debug模式
-    din                          : 是否主动时配刘海屏
-    gms_games_app_id             : google play games id
-    google_admob_application_id  : admob app id
-    facebook_appId               : facebook app id
-    facebook_clientToken         : facebook 客户端token
+**Notice**
+    *ivy_debug*                   : 是否是debug模式
+    *din*                          : 是否主动时配刘海屏
+    *gms_games_app_id*             : google play games id
+    *google_admob_application_id*  : admob app id
+    *facebook_appId*               : facebook app id
+    *facebook_clientToken*         : facebook 客户端token
 3. 主module 引用模块 ivy-sdk-core
 4. 将 CocosCreator.java、CocosCreatorEvents.java 导入主module
 5. 在 AppActiviy的onCreate方法中监听并初始化
@@ -531,4 +528,119 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
 `RiseSdk.toast(msg:string);`
 
 
+## default.json 各部分说明
+**普通属性**
+appid: 应用id
+appflyers.devkey: af app id
+requireFriends:是否在facebook登陆是拉取朋友列表
+enableAfAdPing:是否开启自定义af广告收入统计事件
+mixAdEvents：交叉推广事件是否与正式广告事件合并
+api.top_user_advalue：用户分层价值事件，不需要修改
+push: 自定义应用内消息推送
+remoteconfig：key-value格式的预配置字段，在firebase remote config 获取失败时可使用
+**广告**
+广告类型包括 banner、full(大屏广告)、video(激励视频广告)
+内部可配置属性：
+    - provider：广告平台，此sdk仅包含Admob
+    - p: 广告单元
+    - placement: 广告id
+**tip:每种广告类型可配置多个广告单元:**
+*注：provider值中的 1x、2x 作为广告单元区分，在调用广告时区分广告对象*
 
+```js
+  "video": [
+    {
+      "provider": "admob_1x",
+      "p": {
+        "placement": "ca-app-pub-1914768831611213/5419657410"
+      }
+    },
+    {
+      "provider": "admob_2x",
+      "p": {
+        "placement": "ca-app-pub-1914768831611213/5419657410"
+      }
+    }
+  ]
+```
+adLoadTimeout：广告加载自定义超时时间
+adRefreshInterval：banner广告自动刷新间隔，单位ms
+bannerLoadTimeoutSeconds： banner自定义加载超时时间
+**计费**
+所有计费点信息配置在 payment 字段结构中
+key：用于在计费点购买后的校验支付结果，若留空，则购买后不会校验购买结果，以google billing 返回状态为最终购买结果
+checkout：计费点信息列表，示例：
+
+```js
+//说明：
+// billId：即每个计费点对应的序号，如 1，2；在程序中传递此序号用以支付对应计费点
+// feename：google billing 后台创建的计费点名称
+// repeat： 若值为 1 则为消耗型计费点；0 则为订阅型计费点
+// usd：计费点价格
+     "1": {
+        "feename": "25coins",
+        "repeat": 1,
+        "usd": 1.99
+      },
+      "2": {
+        "feename": "70coins",
+        "repeat": 1,
+        "usd": 4.99
+      }
+```
+
+**转化事件**
+gen_events、summery_events 内配置用作app转化标记事件，可不修改
+
+
+**通过firebase remote config 下发配置**
+1. 整体下发
+    * 将default.json内容作为字段 config_grid_data_android 的值配置
+2. 仅下发Banner配置
+    * 将banner配置作为字段 ad_config_banner 的值配置
+    示例：
+    
+```js
+{
+    "ads":[
+        {
+          "provider": "admob",
+          "p": {
+            "placement": "ca-app-pub-1914768831611213/4106575741"
+          }
+        }
+    ],
+    "adRefreshInterval": 1800
+}
+```
+3. 仅下发大屏广告配置
+    * 将大屏广告配置作为字段 ad_config_full 的值配置
+    示例：
+    
+```js
+{
+    "ads":[
+        {
+          "provider": "admob",
+          "p": {
+            "placement": "ca-app-pub-1914768831611213/2402557932"
+          }
+        }
+    ]
+}
+```
+4. 仅下发激励视频广告配置
+    * 将激励视频广告配置作为字段 ad_config_video 的值配置
+    
+```js
+{
+    "ads":[
+         {
+          "provider": "admob",
+          "p": {
+            "placement": "ca-app-pub-1914768831611213/5419657410"
+          }
+        }
+    ]
+}
+```

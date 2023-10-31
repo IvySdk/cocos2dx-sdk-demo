@@ -430,6 +430,7 @@ public final class GridManager {
       }
     }
 
+
     // banner配置 ad_config_banner
     String bannerConfig = firebaseRemoteConfig.getString("ad_config_banner");
     if (!FirebaseRemoteConfig.DEFAULT_VALUE_FOR_STRING.equals(bannerConfig)) {
