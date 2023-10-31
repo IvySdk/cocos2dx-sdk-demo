@@ -764,6 +764,7 @@ sdk配置文件,放置在`native/engine/android/app/src/main/assets`目录下，
 - provider：广告平台，此sdk仅包含Admob
 - p: 广告单元
 - placement: 广告id
+
 **tip:每种广告类型可配置多个广告单元:**
 *注：provider值中的 1x、2x 作为广告单元区分，在调用广告时区分广告对象*
 
