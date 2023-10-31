@@ -529,7 +529,7 @@ native.jsbBridgeWrapper.addNativeEventListener(Events.onOther, (arg) => {
 
 
 ## default.json 各部分说明
-**普通属性**
+### 普通属性
 appid: 应用id
 v_api: 此配置版本号
 appflyers.devkey: af app id
@@ -539,7 +539,7 @@ mixAdEvents：交叉推广事件是否与正式广告事件合并
 api.top_user_advalue：用户分层价值事件，不需要修改
 push: 自定义应用内消息推送
 remoteconfig：key-value格式的预配置字段，在firebase remote config 获取失败时可使用
-**广告**
+### 广告
 广告类型包括 banner、full(大屏广告)、video(激励视频广告)
 内部可配置属性：
     - provider：广告平台，此sdk仅包含Admob
@@ -567,7 +567,7 @@ remoteconfig：key-value格式的预配置字段，在firebase remote config 获
 adLoadTimeout：广告加载自定义超时时间
 adRefreshInterval：banner广告自动刷新间隔，单位ms
 bannerLoadTimeoutSeconds： banner自定义加载超时时间
-**计费**
+### 计费
 所有计费点信息配置在 payment 字段结构中
 key：用于在计费点购买后的校验支付结果，若留空，则购买后不会校验购买结果，以google billing 返回状态为最终购买结果
 checkout：计费点信息列表，示例：
@@ -590,11 +590,11 @@ checkout：计费点信息列表，示例：
       }
 ```
 
-**转化事件**
+### 转化事件
 gen_events、summery_events 内配置用作app转化标记事件，可不修改
 
 
-**通过firebase remote config 下发配置**
+### 通过firebase remote config 下发配置
 1. 整体下发
     * 将default.json内容作为字段 config_grid_data_android 的值配置
 2. 仅下发Banner配置
